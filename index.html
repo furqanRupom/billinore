@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Billiniore Website</title>
+</head>
+
+<body>
+
+
+  <!--  main  start-->
+
+  <main class="max-w-7xl mx-auto">
+    <div class="flex justify-center my-5 space-x-5">
+      <input id="search-field" class="border border-purple-900 px-2 rounded-md" type="text"
+        placeholder="Enter category">
+      <button id="search-button"
+        class="px-7 py-2 rounded-md bg-purple-900 hover:bg-purple-800 text-white font-semibold">search</button>
+    </div>
+    <div class="text-4xl font-bold text-center p-5">
+      <h2>Richest By <span id="category"></span> </h2>
+      <h3 class="pt-2"><span id="sub-category">Industry</span></h3>
+    </div>
+
+    <section id="bil-container" class="grid grid-cols-3 gap-10 ">
+
+
+    </section>
+
+
+    
+  </main>
+
+
+  <!--  main end -->
+
+
+  <script src="./js/bil.js"></script>
+</body>
+
+</html>
