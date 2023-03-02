@@ -1,12 +1,20 @@
-const Billionaire = async(category)=>{
+const Billionaire = async(category,dataLoad)=>{
     const res = await fetch(`https://forbes400.onrender.com/api/forbes400/industries/${category}`);
     const bilData = await res.json();
-    disPlayBillionaire(bilData.slice(1,10));
+    disPlayBillionaire(bilData,dataLoad);
 }
 
 
-disPlayBillionaire = (bildata) =>{
+disPlayBillionaire = (bildata,dataLoad) =>{
         const BilContainer = document.getElementById('bil-container');
+        const getShowMore = document.getElementById('showMore')
+        if(dataLoad && bildata.length > 10){
+            getShowMore.classList.remove('hidden');
+            getShowMore.classList,add('flex')
+        }else{
+            getShowMore.classList.add('hidden');
+            getShowMore.classList.remove('flex');
+        }
         bildata.forEach(everyBillionaire =>{
 
             console.log(everyBillionaire);
@@ -38,11 +46,34 @@ disPlayBillionaire = (bildata) =>{
             </div>
         `
     });
+    loadingOnProcess(false);
+}
+
+
+const loadingOnProcess = (isLoading) =>{
+    const getSpinner = document.getElementById('spinner');
+    if(isLoading){
+        getSpinner.classList.remove('hidden')
+    }else{
+        getSpinner.classList.add('hidden');
+    }
 }
 
 
 
 document.getElementById('search-button').addEventListener('click', ()=>{
+    loadingOnProcess(true);
+    const inputValue = document.getElementById('search-field').value;
+    const setCategory = document.getElementById('category');
+    const setSubCategory = document.getElementById('sub-category');
+    setCategory.innerText = inputValue;
+    setSubCategory.innerText = inputValue;
+    Billionaire(inputValue,10);
+})
+
+
+document.getElementById('showMore').addEventListener('click', ()=>{
+    loadingOnProcess(true);
     const inputValue = document.getElementById('search-field').value;
     const setCategory = document.getElementById('category');
     const setSubCategory = document.getElementById('sub-category');
